@@ -38,6 +38,9 @@ public class FilteringIteratorTest {
 		});
     }
 	
+    /**
+     * Test even number test works with regular iterator
+     */
 	@Test
 	public void testIterator(){
 		Iterator<Integer> myIter = s_data.iterator();
@@ -52,6 +55,9 @@ public class FilteringIteratorTest {
 		Assert.assertArrayEquals(actual.toArray(), expected.toArray());
 	}
 	
+	/**
+	 * Test calling next past end of the list
+	 */
 	@Test(expected=NoSuchElementException.class)
 	public void testEndOfList() {
 		Iterator<Integer> myIter = s_data.iterator();
@@ -62,6 +68,9 @@ public class FilteringIteratorTest {
 		}
 	}
 
+	/**
+	 * Test iterator behavior is same as list iterator if test object is null (assuming this requirement)
+	 */
 	@Test
 	public void testNullTestObj() {
 		Iterator<Integer> myIter = s_data.iterator();
@@ -74,6 +83,9 @@ public class FilteringIteratorTest {
 		Assert.assertArrayEquals(actual.toArray(), s_data.toArray());
 	}
 
+	/**
+	 * Test behavior is same as original iterator when test returns true for all
+	 */
 	@Test
 	public void testAllTrueObj() {
 		Iterator<Integer> myIter = s_data.iterator();
@@ -86,6 +98,9 @@ public class FilteringIteratorTest {
 		Assert.assertArrayEquals(actual.toArray(), s_data.toArray());
 	}
 
+	/**
+	 * Test no items are found when test returns false for all
+	 */
 	@Test
 	public void testAllFalseObj() {
 		Iterator<Integer> myIter = s_data.iterator();
