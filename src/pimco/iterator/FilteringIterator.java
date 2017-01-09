@@ -9,7 +9,7 @@ public class FilteringIterator<T> implements Iterator<T> {
 
 	Iterator<T> m_iter;
 	IObjectTest m_tester;
-	T m_nextObj;
+	T m_nextObj; // to store next object that passes test criteria
 	
 	public FilteringIterator(Iterator<T> myIterator, IObjectTest myTest){
 		m_iter = myIterator;
@@ -20,7 +20,8 @@ public class FilteringIterator<T> implements Iterator<T> {
 	public boolean hasNext() {
 		while (m_iter.hasNext()) {
 			T nextObj = m_iter.next();
-			if (m_tester == null || m_tester.test(nextObj)) {
+			if (m_tester == null // assuming no test provided defaults to original iterator behavior
+					|| m_tester.test(nextObj)) {
 				m_nextObj = nextObj;
 				return true;
 			}
@@ -44,4 +45,5 @@ public class FilteringIterator<T> implements Iterator<T> {
 		return nextObj;
 	}
 
+	/*** Other Iterator delegating methods, e.g. remove ***/
 }
